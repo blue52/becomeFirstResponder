@@ -8,11 +8,33 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet weak var IDtextFd: UITextField!
+    
+    @IBOutlet weak var PasswordFd: UITextField!
+    @IBAction func IDtextField(_ sender: AnyObject) {
+    }
 
+    @IBAction func PasswordtextField(_ sender: AnyObject) {
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == IDtextFd {
+            PasswordFd.becomeFirstResponder()
+            return false
+        }else{
+            PasswordFd.resignFirstResponder()
+            return true
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        IDtextFd.returnKeyType = .next
+        PasswordFd.isSecureTextEntry = true
+        
     }
 
     override func didReceiveMemoryWarning() {
